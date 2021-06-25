@@ -2,18 +2,26 @@ import './App.css';
 import Navbar from './components/Navbar';
 import CountriesList from './components/CountriesList';
 import CountryDetails from './components/CountryDetails';
-import { Switch, Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import countries from './countries.json'
+
 
 function App() {
   return (
     <div className="App">
       <Navbar />
 
-      <Switch>
-          <Route exact path="/" component={CountriesList} />
-          <Route exact path="/:cca3" component={CountryDetails} />
+      <div className="container flex mx-auto my-8 ">
+        <CountriesList countriesList={countries}/>
+        <Switch>
+          <Route exact path="/:cca3"  
+            render={ (routerProps) => 
+            <CountryDetails {...routerProps} countriesList={countries} />
+            } 
+          />
         </Switch>
-
+      </div>
+        
     </div>
   );
 }

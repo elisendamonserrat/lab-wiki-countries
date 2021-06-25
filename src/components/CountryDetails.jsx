@@ -1,16 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import countriesList from '../countries.json'
 
 const CountryDetails = (props) => {
+  const { countriesList } = props;
   const countryCode = props.match.params.cca3;
   const country = countriesList.find(country => country.cca3 === countryCode)
   
   return (
-      <div className="col-7">
-      <h1>{country.name.common}</h1>
-      <table className="table">
-        <thead></thead>
+      <div className="w-1/2 ml-8 px-8 mt-12">
+      <h1 className="text-left font-black text-xl mb-4 mt-2">{country.name.common}</h1>
+      <table >
         <tbody>
           <tr>
             <td>Capital</td>
